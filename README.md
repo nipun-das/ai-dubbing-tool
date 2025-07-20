@@ -1,5 +1,11 @@
 # AI Dubbing Tool 🎭
 
+Team Name : GenFusion
+Members : Nipun Das
+          Anandu M
+Track : Entertainment
+
+
 A powerful tool that converts audio from one language to another while maintaining the original speaker's voice using AI voice cloning technology.
 
 ## What This Tool Does ✨
