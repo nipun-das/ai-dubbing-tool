@@ -1,0 +1,59 @@
+# AI Dubbing Tool Configuration
+
+# Model Settings
+models:
+  whisper:
+    model_name: "base"  # tiny, base, small, medium, large
+    language: "hi"      # Hindi
+    task: "translate"   # translate to English
+    verbose: true
+  
+  yourtts:
+    model_name: "tts_models/multilingual/multi-dataset/your_tts"  # YourTTS model
+
+# Audio Processing Settings
+audio:
+  sample_rate: 22050        # YourTTS uses 22.05kHz
+  reference_duration: 10.0  # Duration of reference audio in seconds
+  segment_duration: 30.0    # Duration of audio segments for processing
+  
+  # Silence detection for segmentation
+  silence:
+    min_silence_len: 1000   # Minimum silence length in milliseconds
+    silence_thresh: -40     # Silence threshold in dB
+    keep_silence: 500       # Keep silence duration in milliseconds
+
+# Processing Settings
+processing:
+  use_segments: true        # Process audio in segments (recommended for long audio)
+  device: "cuda"           # auto, cpu, cuda, mps
+  batch_size: 1            # Batch size for processing
+  
+  # Output settings
+  output:
+    directory: "output"
+    format: "wav"
+    quality: "high"
+
+# Voice Cloning Settings
+voice_cloning:
+  reference_text: "This is a reference audio for voice cloning."
+  language: "en"           # Language for YourTTS synthesis
+
+# Translation Settings
+translation:
+  initial_prompt: ""       # Optional initial prompt for translation
+  temperature: 0.0         # Temperature for translation (0.0 for deterministic)
+  word_timestamps: false   # Extract word-level timestamps
+  
+# Performance Settings
+performance:
+  max_memory_usage: 0.8    # Maximum GPU memory usage (0.0-1.0)
+  enable_amp: true         # Enable automatic mixed precision
+  num_workers: 4           # Number of worker processes
+
+# Logging Settings
+logging:
+  level: "INFO"            # Logging level (DEBUG, INFO, WARNING, ERROR)
+  save_logs: true          # Save logs to file
+  log_file: "dubbing.log"  # Log file name 
